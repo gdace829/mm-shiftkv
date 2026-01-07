@@ -1,0 +1,45 @@
+QWEN2-VL LAYER STATISTICS TABLE (PREFILL TAIL-WINDOW, DECODE LAST-TOKEN)
+================================================================================
+
+Model: /data/model/models--Qwen--Qwen2-VL-7B-Instruct/snapshots/eed13092ef92e448dd6875b2a00151bd3f7db0ac
+Dataset: synthdog
+Tail tokens: 32
+SynthDog JSON: /data/dataset/synthdog-en/synthdog-en.json
+Successful samples: 200/200
+Max decode tokens: 64
+
+USAGE:
+  decode_mean = prefill_mean + mean_shift
+  decode_std  = prefill_std  * std_ratio
+
+TABLE:
+--------------------------------------------------------------------------------
+0	mean_shift=-0.001010	std_ratio=1.229970	prefill_mean=0.000296	prefill_std=0.196001	decode_mean=-0.000713	decode_std=0.241075	samples=200
+1	mean_shift=-0.019112	std_ratio=3.820851	prefill_mean=-0.004046	prefill_std=0.271270	decode_mean=-0.023157	decode_std=1.036481	samples=200
+2	mean_shift=-0.011098	std_ratio=2.758928	prefill_mean=-0.005109	prefill_std=0.332227	decode_mean=-0.016207	decode_std=0.916589	samples=200
+3	mean_shift=-1.201536	std_ratio=240.969662	prefill_mean=-0.003964	prefill_std=0.446582	decode_mean=-1.205500	decode_std=107.612724	samples=200
+4	mean_shift=-1.425373	std_ratio=243.256919	prefill_mean=-0.003237	prefill_std=0.495049	decode_mean=-1.428610	decode_std=120.424055	samples=200
+5	mean_shift=-1.476198	std_ratio=207.280499	prefill_mean=-0.006538	prefill_std=0.592871	decode_mean=-1.482736	decode_std=122.890618	samples=200
+6	mean_shift=-1.538466	std_ratio=178.782268	prefill_mean=-0.005838	prefill_std=0.701094	decode_mean=-1.544304	decode_std=125.343133	samples=200
+7	mean_shift=-1.582880	std_ratio=148.862723	prefill_mean=-0.007472	prefill_std=0.851855	decode_mean=-1.590352	decode_std=126.809526	samples=200
+8	mean_shift=-1.605957	std_ratio=136.436090	prefill_mean=-0.007486	prefill_std=0.936641	decode_mean=-1.613443	decode_std=127.791586	samples=200
+9	mean_shift=-1.672235	std_ratio=142.477241	prefill_mean=-0.002553	prefill_std=0.910898	decode_mean=-1.674788	decode_std=129.782297	samples=200
+10	mean_shift=-1.691888	std_ratio=138.942738	prefill_mean=-0.006070	prefill_std=0.941016	decode_mean=-1.697958	decode_std=130.747289	samples=200
+11	mean_shift=-1.746232	std_ratio=136.120249	prefill_mean=-0.005638	prefill_std=0.967988	decode_mean=-1.751870	decode_std=131.762807	samples=200
+12	mean_shift=-1.799416	std_ratio=131.930549	prefill_mean=-0.006122	prefill_std=1.013574	decode_mean=-1.805538	decode_std=133.721404	samples=200
+13	mean_shift=-1.821226	std_ratio=124.968331	prefill_mean=-0.007420	prefill_std=1.077871	decode_mean=-1.828646	decode_std=134.699753	samples=200
+14	mean_shift=-1.831032	std_ratio=122.533809	prefill_mean=-0.005303	prefill_std=1.099355	decode_mean=-1.836334	decode_std=134.708215	samples=200
+15	mean_shift=-1.846764	std_ratio=119.620449	prefill_mean=-0.004968	prefill_std=1.134297	decode_mean=-1.851732	decode_std=135.685103	samples=200
+16	mean_shift=-1.843776	std_ratio=116.530771	prefill_mean=-0.008180	prefill_std=1.164375	decode_mean=-1.851956	decode_std=135.685518	samples=200
+17	mean_shift=-1.844326	std_ratio=113.883568	prefill_mean=-0.007544	prefill_std=1.191445	decode_mean=-1.851870	decode_std=135.686044	samples=200
+18	mean_shift=-1.838840	std_ratio=107.425132	prefill_mean=-0.005461	prefill_std=1.263086	decode_mean=-1.844301	decode_std=135.687174	samples=200
+19	mean_shift=-1.837823	std_ratio=98.367920	prefill_mean=-0.006408	prefill_std=1.379414	decode_mean=-1.844231	decode_std=135.690093	samples=200
+20	mean_shift=-1.814099	std_ratio=87.059189	prefill_mean=-0.007068	prefill_std=1.547422	decode_mean=-1.821167	decode_std=134.717294	samples=200
+21	mean_shift=-1.813966	std_ratio=71.057010	prefill_mean=-0.007045	prefill_std=1.895977	decode_mean=-1.821012	decode_std=134.722426	samples=200
+22	mean_shift=-1.799108	std_ratio=58.312668	prefill_mean=-0.014325	prefill_std=2.310313	decode_mean=-1.813433	decode_std=134.720486	samples=200
+23	mean_shift=-1.767111	std_ratio=46.571369	prefill_mean=-0.007569	prefill_std=2.871797	decode_mean=-1.774680	decode_std=133.743513	samples=200
+24	mean_shift=-1.714546	std_ratio=36.784660	prefill_mean=-0.029438	prefill_std=3.583125	decode_mean=-1.743984	decode_std=131.804037	samples=200
+25	mean_shift=-1.635981	std_ratio=29.869369	prefill_mean=-0.023362	prefill_std=4.346641	decode_mean=-1.659343	decode_std=129.831412	samples=200
+26	mean_shift=-0.992703	std_ratio=11.397690	prefill_mean=-0.021906	prefill_std=5.185156	decode_mean=-1.014609	decode_std=59.098801	samples=200
+27	mean_shift=-0.067289	std_ratio=0.534916	prefill_mean=0.064043	prefill_std=4.869531	decode_mean=-0.003246	decode_std=2.604792	samples=200
+================================================================================

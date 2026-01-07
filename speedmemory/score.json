@@ -1,0 +1,282 @@
+{
+    "fullkv-2000": {
+        "Peak memory usage": 14.44803237915039,
+        "Prefilling time": 0.1161043643951416,
+        "Cache Size": 0.9765625,
+        "Total time": 15.856969594955444,
+        "Generation time": 15.740865230560303,
+        "Decoding latency": 0.03019660472869873
+    },
+    "fullkv-4000": {
+        "Peak memory usage": 15.651372909545898,
+        "Prefilling time": 0.15879416465759277,
+        "Cache Size": 1.953125,
+        "Total time": 16.85547137260437,
+        "Generation time": 16.696677207946777,
+        "Decoding latency": 0.032010164260864254
+    },
+    "fullkv-8000": {
+        "Peak memory usage": 18.111268520355225,
+        "Prefilling time": 0.3025693893432617,
+        "Cache Size": 3.90625,
+        "Total time": 18.53096032142639,
+        "Generation time": 18.22839093208313,
+        "Decoding latency": 0.03492854595184326
+    },
+    "fullkv-16000": {
+        "Peak memory usage": 23.03350257873535,
+        "Prefilling time": 0.6526024341583252,
+        "Cache Size": 7.8125,
+        "Total time": 21.959381341934204,
+        "Generation time": 21.30677890777588,
+        "Decoding latency": 0.04122791528701782
+    },
+    "fullkv-32000": {
+        "Peak memory usage": 32.873820304870605,
+        "Prefilling time": 1.6626992225646973,
+        "Cache Size": 15.625,
+        "Total time": 29.263091564178467,
+        "Generation time": 27.60039234161377,
+        "Decoding latency": 0.05355086803436279
+    },
+    "ours-2000": {
+        "Peak memory usage": 13.572636604309082,
+        "Prefilling time": 0.1771390438079834,
+        "Cache Size": 0.03125,
+        "Total time": 15.071853637695312,
+        "Generation time": 14.894714593887329,
+        "Decoding latency": 0.02851532220840454
+    },
+    "ours-4000": {
+        "Peak memory usage": 13.91070032119751,
+        "Prefilling time": 0.2573089599609375,
+        "Cache Size": 0.03125,
+        "Total time": 15.218245029449463,
+        "Generation time": 14.960936069488525,
+        "Decoding latency": 0.02840627670288086
+    },
+    "ours-8000": {
+        "Peak memory usage": 14.58124303817749,
+        "Prefilling time": 0.4511606693267822,
+        "Cache Size": 0.03125,
+        "Total time": 15.373231410980225,
+        "Generation time": 14.922070741653442,
+        "Decoding latency": 0.02835761070251465
+    },
+    "ours-16000": {
+        "Peak memory usage": 15.929807662963867,
+        "Prefilling time": 0.8789379596710205,
+        "Cache Size": 0.03125,
+        "Total time": 15.798907041549683,
+        "Generation time": 14.919969081878662,
+        "Decoding latency": 0.02845930814743042
+    },
+    "ours-32000": {
+        "Peak memory usage": 18.62101650238037,
+        "Prefilling time": 2.0427627563476562,
+        "Cache Size": 0.03125,
+        "Total time": 16.988162755966187,
+        "Generation time": 14.94539999961853,
+        "Decoding latency": 0.028588018417358398
+    },
+    "snapkv-2000": {
+        "Peak memory usage": 13.489032745361328,
+        "Prefilling time": 0.0994882583618164,
+        "Cache Size": 0.03125,
+        "Total time": 15.019542694091797,
+        "Generation time": 14.92005443572998,
+        "Decoding latency": 0.028429350852966308
+    },
+    "snapkv-4000": {
+        "Peak memory usage": 13.726568222045898,
+        "Prefilling time": 0.16358232498168945,
+        "Cache Size": 0.03125,
+        "Total time": 15.100075006484985,
+        "Generation time": 14.936492681503296,
+        "Decoding latency": 0.028618557453155516
+    },
+    "snapkv-8000": {
+        "Peak memory usage": 14.233338832855225,
+        "Prefilling time": 0.30644989013671875,
+        "Cache Size": 0.03125,
+        "Total time": 15.238402843475342,
+        "Generation time": 14.931952953338623,
+        "Decoding latency": 0.028378746509552
+    },
+    "snapkv-16000": {
+        "Peak memory usage": 15.249322891235352,
+        "Prefilling time": 0.6655616760253906,
+        "Cache Size": 0.03125,
+        "Total time": 15.545165061950684,
+        "Generation time": 14.879603385925293,
+        "Decoding latency": 0.02834158420562744
+    },
+    "snapkv-32000": {
+        "Peak memory usage": 17.280070304870605,
+        "Prefilling time": 1.6649963855743408,
+        "Cache Size": 0.03125,
+        "Total time": 16.584856510162354,
+        "Generation time": 14.919860124588013,
+        "Decoding latency": 0.028376433849334717
+    },
+    "keydiff-2000": {
+        "Peak memory usage": 13.489032745361328,
+        "Prefilling time": 0.10390996932983398,
+        "Cache Size": 0.03125,
+        "Total time": 14.984442949295044,
+        "Generation time": 14.88053297996521,
+        "Decoding latency": 0.028397562503814696
+    },
+    "keydiff-4000": {
+        "Peak memory usage": 13.726568222045898,
+        "Prefilling time": 0.17708039283752441,
+        "Cache Size": 0.03125,
+        "Total time": 15.096693754196167,
+        "Generation time": 14.919613361358643,
+        "Decoding latency": 0.02836975336074829
+    },
+    "keydiff-8000": {
+        "Peak memory usage": 14.233338832855225,
+        "Prefilling time": 0.32535862922668457,
+        "Cache Size": 0.03125,
+        "Total time": 15.247655391693115,
+        "Generation time": 14.92229676246643,
+        "Decoding latency": 0.028526229858398436
+    },
+    "keydiff-16000": {
+        "Peak memory usage": 15.249322891235352,
+        "Prefilling time": 0.7015724182128906,
+        "Cache Size": 0.03125,
+        "Total time": 15.626426219940186,
+        "Generation time": 14.924853801727295,
+        "Decoding latency": 0.0284995436668396
+    },
+    "keydiff-32000": {
+        "Peak memory usage": 17.280070304870605,
+        "Prefilling time": 1.7346832752227783,
+        "Cache Size": 0.03125,
+        "Total time": 16.6922550201416,
+        "Generation time": 14.957571744918823,
+        "Decoding latency": 0.028415329456329345
+    },
+    "tova-2000": {
+        "Peak memory usage": 13.489032745361328,
+        "Prefilling time": 0.10373139381408691,
+        "Cache Size": 0.03125,
+        "Total time": 15.079545259475708,
+        "Generation time": 14.975813865661621,
+        "Decoding latency": 0.02846909999847412
+    },
+    "tova-4000": {
+        "Peak memory usage": 13.726568222045898,
+        "Prefilling time": 0.17218494415283203,
+        "Cache Size": 0.03125,
+        "Total time": 15.089512825012207,
+        "Generation time": 14.917327880859375,
+        "Decoding latency": 0.02837937593460083
+    },
+    "tova-8000": {
+        "Peak memory usage": 14.233338832855225,
+        "Prefilling time": 0.3263680934906006,
+        "Cache Size": 0.03125,
+        "Total time": 15.306544065475464,
+        "Generation time": 14.980175971984863,
+        "Decoding latency": 0.028377583026885988
+    },
+    "tova-16000": {
+        "Peak memory usage": 15.249322891235352,
+        "Prefilling time": 0.6990489959716797,
+        "Cache Size": 0.03125,
+        "Total time": 15.649511337280273,
+        "Generation time": 14.950462341308594,
+        "Decoding latency": 0.028445348739624024
+    },
+    "tova-32000": {
+        "Peak memory usage": 17.280070304870605,
+        "Prefilling time": 1.7368617057800293,
+        "Cache Size": 0.03125,
+        "Total time": 16.7032208442688,
+        "Generation time": 14.96635913848877,
+        "Decoding latency": 0.028505630493164062
+    },
+    "streamingllm-2000": {
+        "Peak memory usage": 13.489032745361328,
+        "Prefilling time": 0.09677314758300781,
+        "Cache Size": 0.03125,
+        "Total time": 15.051299810409546,
+        "Generation time": 14.954526662826538,
+        "Decoding latency": 0.028555922508239746
+    },
+    "streamingllm-4000": {
+        "Peak memory usage": 13.726568222045898,
+        "Prefilling time": 0.16080594062805176,
+        "Cache Size": 0.03125,
+        "Total time": 15.131263017654419,
+        "Generation time": 14.970457077026367,
+        "Decoding latency": 0.028449268341064454
+    },
+    "streamingllm-8000": {
+        "Peak memory usage": 14.233338832855225,
+        "Prefilling time": 0.3043792247772217,
+        "Cache Size": 0.03125,
+        "Total time": 15.244928121566772,
+        "Generation time": 14.94054889678955,
+        "Decoding latency": 0.028598332405090333
+    },
+    "streamingllm-16000": {
+        "Peak memory usage": 15.249322891235352,
+        "Prefilling time": 0.6637139320373535,
+        "Cache Size": 0.03125,
+        "Total time": 15.63425350189209,
+        "Generation time": 14.970539569854736,
+        "Decoding latency": 0.02855785846710205
+    },
+    "streamingllm-32000": {
+        "Peak memory usage": 17.280070304870605,
+        "Prefilling time": 1.6641294956207275,
+        "Cache Size": 0.03125,
+        "Total time": 16.60674738883972,
+        "Generation time": 14.942617893218994,
+        "Decoding latency": 0.02833955526351929
+    },
+    "expected_attention-2000": {
+        "Peak memory usage": 13.974012851715088,
+        "Prefilling time": 0.13546371459960938,
+        "Cache Size": 0.03125,
+        "Total time": 15.21139407157898,
+        "Generation time": 15.07593035697937,
+        "Decoding latency": 0.028721442222595216
+    },
+    "expected_attention-4000": {
+        "Peak memory usage": 14.708965301513672,
+        "Prefilling time": 0.2072131633758545,
+        "Cache Size": 0.03125,
+        "Total time": 15.309386491775513,
+        "Generation time": 15.102173328399658,
+        "Decoding latency": 0.028752057552337645
+    },
+    "expected_attention-8000": {
+        "Peak memory usage": 16.202796459197998,
+        "Prefilling time": 0.36724066734313965,
+        "Cache Size": 0.03125,
+        "Total time": 15.448546886444092,
+        "Generation time": 15.081306219100952,
+        "Decoding latency": 0.02863969326019287
+    },
+    "expected_attention-16000": {
+        "Peak memory usage": 19.165069580078125,
+        "Prefilling time": 0.7602477073669434,
+        "Cache Size": 0.03125,
+        "Total time": 15.845100402832031,
+        "Generation time": 15.084852695465088,
+        "Decoding latency": 0.02861309766769409
+    },
+    "expected_attention-32000": {
+        "Peak memory usage": 25.092570304870605,
+        "Prefilling time": 1.8332247734069824,
+        "Cache Size": 0.03125,
+        "Total time": 16.929461240768433,
+        "Generation time": 15.09623646736145,
+        "Decoding latency": 0.028719561100006105
+    }
+}
