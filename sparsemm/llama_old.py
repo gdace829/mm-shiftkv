@@ -1019,122 +1019,12 @@ def llama_flash_attn2_forward_SparseMM(
 
     is_prefill = q_len != 1
 
-    # ==========================================================
-    # QAdA: Gaussian Approx（等长 local 段，完全向量化）
-    # ==========================================================
-    @torch.no_grad()
-    def _estimate_bulk_stats_diag_from_prefill(
-        K_bhTd: torch.Tensor, T: int, *, t_sink: int, t_local: int
-    ):
-        """
-        输入:
-          - K_bhTd: [B, H, T, D]（按 head 展开的 full keys）
-          - T: 当前 prefill 序列长度
-          - t_sink: 前部 sink 长度
-          - t_local: 局部窗口总长度（含 sink）
-
-        输出:
-          - mu_K:  [H,D]  bulk 的均值
-          - var_K: [H,D]  bulk 的对角方差
-        """
-        device = K_bhTd.device
-        B, H, _, D = K_bhTd.shape
-
-        t_sink_ = max(int(t_sink), 0)
-        t_loc_  = max(int(t_local), 0)
-        t_loc_  = min(t_loc_, T)
-        right_len = max(t_loc_ - t_sink_, 0)
-
-        keep = torch.ones(T, dtype=torch.bool, device=device)
-        if t_sink_ > 0:
-            keep[:t_sink_] = False
-        if right_len > 0:
-            keep[T - right_len:] = False
-        # bulk = ~I
-        bulk_mask = keep  # True 表示 bulk
-
-        Ks = K_bhTd[:, :, bulk_mask, :]        # [B,H,T_bulk,D]
-        if Ks.numel() == 0:
-            mu_K  = torch.zeros(H, D, device=device, dtype=K_bhTd.dtype)
-            var_K = torch.ones (H, D, device=device, dtype=K_bhTd.dtype)
-            return mu_K, var_K
-
-        Ks = Ks.reshape(B, H, -1, D)           # [B,H,*,D]
-        Ks = Ks.mean(dim=0, keepdim=False)     # [H,*,D]（先对 batch 平均）
-        mu_K  = Ks.mean(dim=1)                 # [H,D]
-        var_K = Ks.var (dim=1, unbiased=False) # [H,D]（有偏）
-        var_K = torch.clamp(var_K, min=1e-6)
-        return mu_K, var_K
-    # import torch
-
-
-
-    @torch.no_grad()
-    def _qada_head_mask_gaussian_approx_vec_equalL(
-        q_states: torch.Tensor,                 # [B,H,1,D]（当前 decode 步; B=1）
-        *,
-        K_local_var: torch.Tensor,              # [sum_k_local, 1, D]（varlen 拼接）
-        cu_seqlens_local: torch.Tensor,         # [H+1]（local 的前缀和）——等长！
-        T_full_per_head: torch.Tensor,          # [H]
-        T_local_per_head: torch.Tensor,         # [H]
-        mu_K: torch.Tensor,                     # [H,D]
-        var_K: torch.Tensor,                    # [H,D]  对角协方差
-        tau: float = 0.4,
-        acc_dtype: torch.dtype = torch.float32,
-        eps_T: float = 1e-8,
-        eps_var: float = 1e-6
-    ) -> torch.Tensor:
-        """
-        QAdA 近似判定（式(7)），假设所有 head 的 local 段长度完全一致。
-        完全向量化实现。
-
-        返回 mask_h: [1,H]，True=local，False=full
-        """
-        device = q_states.device
-        B, H, _, D = q_states.shape
-        assert B == 1, "Only support B==1 in decode."
-
-        # ---- local 等长断言并提取 Lf
-        Ls = (cu_seqlens_local[1:] - cu_seqlens_local[:-1])
-        assert torch.all(Ls == Ls[0]), "Expected equal local lengths for all heads."
-        Lf = int(Ls[0].item())
-
-        # ---- 取 q: [H,D]
-        q_h = q_states[:, :, -1, :].reshape(H, D).to(device=device, dtype=acc_dtype)
-        inv_sqrt_D = 1.0 / math.sqrt(D)
-
-        # ---- 组织 K_local: [H, Lf, D]
-        K_loc = K_local_var[:, 0, :].to(device=device, dtype=acc_dtype).view(H, Lf, D)
-
-        # ---- 向量化 logits_local: [H,Lf] = (q_h · K_loc)/sqrt(D)
-        logits_local = torch.einsum('hd,hld->hl', q_h, K_loc) * inv_sqrt_D  # [H,Lf]
-        log_A_local = torch.logsumexp(logits_local, dim=-1)                 # [H]
-
-        # ---- 解析近似的 A_bulk
-        mu_K   = mu_K.to(device=device, dtype=acc_dtype)       # [H,D]
-        var_K  = var_K.to(device=device, dtype=acc_dtype)       # [H,D]
-        var_K  = torch.clamp(var_K, min=eps_var)
-
-        # 每个 head 的 bulk 长度
-        T_visual = (T_full_per_head.to(device) - T_local_per_head.to(device)).clamp(min=0)  # [H]
-
-        mu_s     = (q_h * mu_K).sum(dim=-1) * inv_sqrt_D                                    # [H]
-        sigma_s2 = (q_h * q_h * var_K).sum(dim=-1) / D                                      # [H]
-        log_A_bulk = torch.log(torch.clamp(T_visual.to(acc_dtype), min=eps_T)) \
-                     + mu_s + 0.5 * sigma_s2                                                # [H]
-        # print(log_A_bulk,log_A_local,"sjs",T_visual)
-        # ---- log p_local 与阈值
-        denom = torch.logaddexp(log_A_local, log_A_bulk)        # [H]
-        log_p_local = log_A_local - denom                       # [H]
-        mask_h = (log_p_local > math.log(float(tau)))           # [H]
-       
-        return mask_h.unsqueeze(0)                               # [1,H]
-
+ 
     # =========================
     # FORWARD
     # =========================
     if is_prefill:
-        # --- 你的 KV 压缩与写 cache（保持不变） ---
+       
         key_states_compress, value_states_compress = self.kv_cluster.update_kv(
             key_states, query_states, value_states
         )
@@ -1196,7 +1086,7 @@ def llama_flash_attn2_forward_SparseMM(
     else:
         # ===== DECODE =====
 
-        # 更新两个 cache 槽：local & full
+      
         cache_kwargs = {"sin": sin, "cos": cos, "cache_position": cache_position}
         cache_kwargs["head_lens"] = self.kv_cluster.alt_head_lens
         cache_kwargs["cu_klen"]   = self.kv_cluster.alt_cu_klen

@@ -51,7 +51,7 @@ jsonlines==4.0.0
 kiwisolver==1.4.9
 latex2sympy2==1.9.1
 # Editable install with no version control (llava==1.7.0.dev0)
--e /home/sjs/MM-ShiftKV/LLaVA-NeXT
+-e /home/MM-ShiftKV/LLaVA-NeXT
 -e git+https://github.com/ChengShiest/Vision-Function-Layer.git@93dd16404595c6c05d3c86510fe7f31059ebf19b#egg=lmms_eval&subdirectory=Vision-Token-Dropping
 loguru==0.7.3
 lxml==6.0.2

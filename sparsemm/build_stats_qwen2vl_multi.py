@@ -1,13 +1,6 @@
 
 
 """
-Build layer-wise prefill/decode hidden_states distribution shift statistics
-for Qwen2-VL on multiple datasets.
-
-✅ 已按你要求修改：
-- PREFILL 阶段：不再统计全序列；改为 **只取最后 tail_tokens 个 token** 统计均值/方差（默认 32）
-  统计方式：flatten B×tail×H
-- DECODE 阶段：保持原来逻辑，只统计每步“最后一个 token”的 hidden_states（并对步数求平均）
 
 Supported datasets:
   - synthdog (json)

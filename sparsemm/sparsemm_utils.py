@@ -87,7 +87,6 @@ def load_head_score(model_type):
     if 'llava' in model_type:
         if 'mistral' not in model_type:
             head_score_path = './visual_head/head_score/llava-v1.6.json'
-            # head_score_path = '/home/sjs/duo-attention/output_scores1.json'
         else:
             head_score_path = './visual_head/head_score/llava-mistral-v1.6.json'
     elif 'qwen' in model_type:
@@ -245,10 +244,10 @@ class DynamicCacheSplitHeadFlatten(Cache):
         if past_key_values is not None:
             for layer_idx in range(len(past_key_values)):
                 key_states, value_states = past_key_values[layer_idx]
-                # print(key_states.dim(),"sjs111")
-                cache.update(key_states, value_states, layer_idx)# 就是update缓存
+              
+                cache.update(key_states, value_states, layer_idx)
         return cache
-# 没有继承Cache
+
 class SnapKVCluster():
     def __init__(self, window_size = 64, max_capacity_prompt = 256 + 64, kernel_size = 5, pooling = 'avgpool', layer_idx = None, num_hidden_layers = None, 
                  pyram_mode = False, pyram_beta = 20,num_key_value_groups = 1, gqa_func='mean'):
@@ -664,15 +663,15 @@ class SparseMM():
 
         for head_idx in range(num_heads//self.num_key_value_groups):
 
-            if self.layer_idx!=32 :# 只排除某一层的kvcache
+            if self.layer_idx!=32 :# 
                 # self.head_adaptive_capacity[self.layer_idx][head_idx]=self.base_capacity
                 cache_index = indices[head_idx][...,:self.head_adaptive_capacity[self.layer_idx][head_idx]]
 
                 # cache_index = indices[head_idx][...,:]
             else:
-                # print("ggg")
+              
                 cache_index = indices[head_idx][...,:]
-            # print("sjs11")
+   
             l = cache_index.shape[-1] + self.window_size
             k_lens.append(l)
             max_seqlen_k = max(max_seqlen_k, l)
@@ -760,8 +759,8 @@ class ShiftKVCluster():
         self.use_statistical_predictor = True
 
         # 从环境变量读取配置
-        # statistics_table_path = os.getenv('STATISTICS_TABLE_PATH', "/home/sjs/SparseMM/sparsemm/statistics_table/qwen2vl_ocrbench/layer_statistics_table.json")
-        statistics_table_path = os.getenv('STATISTICS_TABLE_PATH', "/home/sjs/Vision-Function-Layer/Vision-Token-Dropping/testjunzhi/statistics_table/qwen25vl_ocrbench_fixed/layer_statistics_table.json")
+       
+        statistics_table_path = os.getenv('STATISTICS_TABLE_PATH', "/home/Vision-Function-Layer/Vision-Token-Dropping/testjunzhi/statistics_table/qwen25vl_ocrbench_fixed/layer_statistics_table.json")
         enable_statistical_predictor = True
 
         if enable_statistical_predictor and STATISTICAL_PREDICTOR_AVAILABLE and statistics_table_path:

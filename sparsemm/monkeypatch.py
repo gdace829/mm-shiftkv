@@ -5,7 +5,7 @@ import transformers
 # from sparsemm.llama_model import llama_flash_attn2_forward_AdaKV, llama_flash_attn2_forward_PyramidKV, llama_flash_attn2_forward_SnapKV, \
 #                                  llama_flash_attn2_forward_SparseMM, llama_flash_attn2_forward_Mask,llama_flash_attn2_forward_SparseMM_query
 # # from sparsemm.llama_model import prepare_inputs_for_generation_llama_new, adaptive_LlamaModel_forward,custom_LlamaDecoderLayer_forward,adaptive_LlamaModel_forward1
-# print("sjs4")
+
 # from sparsemm.mistral_model import mistral_flash_attn2_forward_AdaKV,  mistral_flash_attn2_forward_PyramidKV, mistral_flash_attn2_forward_SnapKV, \
 #                                    mistral_flash_attn2_forward_SparseMM, mistral_flash_attn2_forward_Mask
 # from sparsemm.mistral_model import prepare_inputs_for_generation_mistral_new, adaptive_MistralModel_forward
@@ -546,7 +546,7 @@ def replace_llama(method):
 
 
 def replace_mistral(method):
-    print("sjs11")
+
     if method == "pyramidkv":
         print("Using PyramidKV!")
         transformers.models.mistral.modeling_mistral.MistralFlashAttention2.forward = mistral_flash_attn2_forward_PyramidKV

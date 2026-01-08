@@ -6,13 +6,12 @@ from typing import List, Optional, Tuple, Union
 import torch.nn.functional as F
 import warnings
 from transformers.cache_utils import Cache, DynamicCache, StaticCache
-print("sjs555")
+
 from transformers.models.llama.modeling_llama import (
     apply_rotary_pos_emb,
     repeat_kv,
     _flash_attention_forward
-)# 这里也用了
-print("sjs666")
+)
 from transformers.modeling_outputs import BaseModelOutputWithPast
 from transformers.utils import (
     logging,
@@ -25,7 +24,7 @@ from sparsemm.sparsemm_utils import DynamicCacheSplitHeadFlatten
 import numpy as np
 torch.set_printoptions(sci_mode=False)
 import time
-print("sjs555")
+
 # from sparsemm.qada_fused_triton import qada_mask_fused_triton
 # from sparsemm.qada_fused_triton import qada_mask_fused_triton_match_python
 
