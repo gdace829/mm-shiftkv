@@ -28,7 +28,7 @@ except ImportError:
     eval_logger.warning("Failed to import qwen_vl_utils; Please install it via `pip install qwen-vl-utils`")
 
 try:
-    from sparsemm.monkeypatch import replace_qwen
+    from mmshift.monkeypatch import replace_qwen
 except Exception as e:
     eval_logger.debug("import sparsemm failed")
 

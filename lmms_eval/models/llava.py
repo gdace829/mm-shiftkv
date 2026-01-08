@@ -39,7 +39,7 @@ except Exception as e:
     eval_logger.debug("LLaVA is not installed. Please install LLaVA to use this model.\nError: %s" % e)
 
 try:
-    from sparsemm.monkeypatch import replace_llama, replace_mistral
+    from mmshift.monkeypatch import replace_llama, replace_mistral
 except Exception as e:
     eval_logger.debug("import sparsemm failed")
 
