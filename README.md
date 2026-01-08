@@ -46,12 +46,15 @@ proposes a **decode-aware but strictly prefill-only** KV selection framework.
 
 ### Results on Multimodal Benchmarks
 <p align="center" width="100%">
-  <img src="assets/main_results.png" alt="main results" width="90%">
+  <img src="assets/benchmark1.png" alt="main results" width="90%">
+</p>
+<p align="center" width="100%">
+  <img src="assets/benchmark2.png" alt="main results" width="90%">
 </p>
 
 ### Decoding Efficiency
 <p align="center" width="100%">
-  <img src="assets/efficiency.png" alt="efficiency" width="60%">
+  <img src="assets/efficient.png" alt="efficiency" width="60%">
 </p>
 
 ---
